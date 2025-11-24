@@ -1,7 +1,7 @@
 {
-  "engines":{
-    "node": ">=20.11.0",
-    "npm":">=10.2.4"
+  "engines": {
+    "node": "20.11.0",
+    "npm": "10.2.4"
   },
   "name": "roamnest",
   "version": "1.0.0",
@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "@maptiler/sdk": "^3.8.0",
-    "cloudinary": "^2.8.0",
+    "cloudinary": "^1.41.3",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^5.1.0",
     "dotenv": "^17.2.3",
