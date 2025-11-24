@@ -1,8 +1,0 @@
-
-services:
-  - type: web
-    name: roamnest
-    env: node
-    rootDir: ./
-    buildCommand: npm install
-    startCommand: node app.js
