@@ -1,7 +1,7 @@
 {
   "engines": {
-    "node": "22",
-    "npm": "10"
+    "node": "22.16.0",
+    "npm": "10.2.4"
   },
   "name": "roamnest",
   "version": "1.0.0",
