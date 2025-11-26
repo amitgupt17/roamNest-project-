@@ -1,11 +1,6 @@
 /* Tax toggler */
 
 
-.form-check-input, .taxSwitch, 
-.totalTax {
-cursor: pointer;
-}
-
 .taxSwitch {
 border: 1px solid black;
 height: 3rem;
@@ -37,26 +32,32 @@ margin-bottom: 2rem;
 /* Tax toggler */
 
 .taxInfo {
-display: none;
+    display: none;
 }
 
 .form-check-input, .taxSwitch, 
 .totalTax {
-cursor: pointer;
+    cursor: pointer;
 }
 
 .taxSwitch {
-border: 1px solid black;
-height: 3rem;
-border-radius: 1rem;
-width: 45vh;
-text-align: center;
-align-content: center;
-margin-bottom: 2rem;
-}  
+    border: 1px solid black;
+    height: 3rem;
+    border-radius: 1rem;
+    width: 45vh;
+    text-align: center;
+    align-content: center;
+   margin-bottom: 2rem;
+
+} 
+.listing-link {
+    text-decoration: none;
+}
+
+
 
 .form-check-input {
-margin-right: -.8rem !important;
+    margin-right: -.8rem !important;
 }
 
 @media screen and (max-width: 272px) {

@@ -50,14 +50,15 @@
     <div><i class="fa-solid fa-igloo"></i></div>
     <p>Domes</p>
   </div>
-  <div class="form-check-reverse form-switch taxSwitch">
-  <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
-  <label class="form-check-label totalTax" for="switchCheckDefault">Display total with taxes</label>
-</div>
+  <div class="form-check-reverse form-switch taxSwitch left">
+    <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+    <label class="form-check-label totalTax" for="switchCheckDefault">Display total with taxes</label>
+  </div>
 </div>
 <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-xs-1" id="allListings">
   <% for(let listing of allListing) { %>
   <a href="/listings/<%= listing._id %>" class="listing-link">
+
   <div class="card listing-card hidden">
     <img src="<%= listing.image.url %>" class="card-img-top" alt="Listing-Image" style="height: 20rem;">
     <div class="card-img-overlay"></div>
@@ -66,7 +67,7 @@
       <br>
       <% if (listing.price) { %>
       &#8377; <%= listing.price.toLocaleString("en-IN") %>/ Night
-      <span class="taxInfo"> &nbsp; &nbsp; + 18% GST</span>
+      <i class="taxInfo"> &nbsp; &nbsp; + 18% GST</i>
       <% } else { %>
       Price not available
       <% } %>
