@@ -50,7 +50,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 const store = MongoStore.create({
-  // mongoUrl: dbURL,
+  mongoUrl: dbURL,
   touchAfter: 24 * 3600,
 });
 
