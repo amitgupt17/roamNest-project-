@@ -6,7 +6,7 @@ maptilerClient.config.apiKey = key;
 
 module.exports.indexform = async (req, res) => {
 
-  const allListing = await Listing.find(queryObj);
+  const allListing = await Listing.find({});
   return res.render("./listings/index.ejs", { allListing });
 };
 
