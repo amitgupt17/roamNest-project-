@@ -1,0 +1,73 @@
+/* Tax toggler */
+
+
+.form-check-input, .taxSwitch, 
+.totalTax {
+cursor: pointer;
+}
+
+.taxSwitch {
+border: 1px solid black;
+height: 3rem;
+border-radius: 1rem;
+width: 45vh;
+text-align: center;
+align-content: center;
+margin-bottom: 2rem;
+}  
+#filters {
+    display : flex;
+    flex-wrap : wrap;
+    align-items: center;
+}
+.filter {
+    text-align : center;
+    margin-right : 2rem;
+    margin-top :2rem;
+    opacity : 0.7;
+
+}
+.filter:hover {
+    opacity: 1;
+    cursor:pointer;
+}
+.filter p  {
+    font-size: 0.8rem;
+}
+/* Tax toggler */
+
+.taxInfo {
+display: none;
+}
+
+.form-check-input, .taxSwitch, 
+.totalTax {
+cursor: pointer;
+}
+
+.taxSwitch {
+border: 1px solid black;
+height: 3rem;
+border-radius: 1rem;
+width: 45vh;
+text-align: center;
+align-content: center;
+margin-bottom: 2rem;
+}  
+
+.form-check-input {
+margin-right: -.8rem !important;
+}
+
+@media screen and (max-width: 272px) {
+    .taxSwitch {
+    border: 1px solid black;
+    height: 2rem;
+    border-radius: 1rem;
+    width: 25vh;
+    text-align: center;
+    align-content: center;
+    margin-bottom: 2rem;
+    font-size: 0.6rem;
+    }  
+}

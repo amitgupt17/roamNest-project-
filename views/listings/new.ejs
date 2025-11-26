@@ -3,7 +3,7 @@
 <div class="row mt-3">
     <div class="col-8 offset-2">
         <br><br>
-        <h3>Create New Listing</h3>
+        <h3>Create New Nest</h3>
         <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
@@ -25,6 +25,13 @@
                 <label for="image" class="form-label">Upload Image</label>
                 <input id="image" name="listing[image]" type="file" class="form-control"/>
                 
+            </div>
+            <br>
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <input placeholder="eg.,Rooms" name="listing[category]" id="category" class="form-control" required>
+                <p class="warning">Note: Please ensure that you select a category only from the list displayed on the homepage. Choosing a different category may result in the category-wise filter not functioning correctly for your Nest.</p>
+                <div class="invalid-feedback">Categories Should be Valid</div>
             </div>
             <div class="row">
                 <div class="mb-3 col-md-4">

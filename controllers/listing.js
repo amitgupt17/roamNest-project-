@@ -5,30 +5,6 @@ const key =process.env.MAP_TOKEN;
 maptilerClient.config.apiKey = key;
 
 module.exports.indexform = async (req, res) => {
-  const { category, search } = req.query;
-  let queryObj = {};
-
-  if (category && category !== 'all') {
-    queryObj.category = category.toLowerCase(); // schema should have lowercase: true
-  }
-
-  if (search) {
-    const searchRegex = new RegExp(search, 'i');
-    const searchObj = {
-      $or: [
-        { title: searchRegex },
-        { location: searchRegex },
-        { description: searchRegex },
-      ]
-    };
-
-    // Combine with category filter
-    if (queryObj.category) {
-      queryObj = { $and: [ { category: queryObj.category }, searchObj ] };
-    } else {
-      queryObj = searchObj;
-    }
-  }
 
   const allListing = await Listing.find(queryObj);
   return res.render("./listings/index.ejs", { allListing });
@@ -36,8 +12,12 @@ module.exports.indexform = async (req, res) => {
 
 
 module.exports.newListing =  (req, res) => {
-  console.log(req.user);
-  return res.render("./listings/new.ejs");
+  try{
+    return res.render("./listings/new.ejs");
+  } catch(e) {
+    req.flash("error",e.message);
+  }
+  
 };
 
 
@@ -59,47 +39,13 @@ module.exports.showform = async (req, res) => {
   console.log(listing);
   return res.render("listings/show.ejs", { listing,key});
 };
-// module.exports.createListing = async (req, res,next) => {
-//   try {
-//     const location = req.body.listing.location;
-    
-//     // Geocode the location
-//     const forwardResult = await maptilerClient.geocoding.forward(location, { limit: 1 });
-    
-//     // Check if geocoding returned results
-//     if (!forwardResult.features || forwardResult.features.length === 0) {
-//       req.flash("error", "Could not find the location. Please enter a valid address.");
-//       return res.redirect("/listings/new");
-//     }
 
-//     let url = req.file.path;
-//     let filename = req.file.filename;
-    
-//     const newListing = new Listing(req.body.listing);
-//     newListing.owner = req.user._id;
-//     newListing.image = { url, filename };
-    
-//     // // FIXED: Uncommented and added the geometry
-//     newListing.geometry = forwardResult.features[0].geometry;
-    
-//     let savedListing = await newListing.save();
-//     console.log(savedListing);
-//     if (!res.headersSent) {
-//       req.flash("success", "New Listing is Created");
-//       return res.redirect("/listings");
-//     }
-    
-
-//   } catch (err) {
-//       console.error("Geocoding error:", err);
-//       req.flash("error", "Could not fetch geolocation for provided address");
-//       return res.redirect("/listings/new");
-//     }
-// };
 module.exports.createListing = async (req, res, next) => {
   try {
     const location = req.body.listing.location;
-    const forwardResult = await maptilerClient.geocoding.forward(location, { limit: 1 });
+    const country = req.body.listing.country;
+    let centerLocation = `${location}, ${+country}`;
+    const forwardResult = await maptilerClient.geocoding.forward(centerLocation, { limit: 1 });
 
     if (!forwardResult.features || forwardResult.features.length === 0) {
       req.flash("error", "Could not find the location. Please enter a valid address.");
@@ -130,7 +76,6 @@ module.exports.createListing = async (req, res, next) => {
   }
 };
 
-
 module.exports.editform = async (req, res) => { 
   let { id } = req.params; 
   const listing = await Listing.findById(id); 
@@ -140,10 +85,7 @@ module.exports.editform = async (req, res) => {
   } 
   let originalImageUrl = listing.image.url; 
   originalImageUrl = originalImageUrl.replace('/upload', '/upload/w_200,h_auto,c_fit');
-  //   "/upload", "/upload/w_250,h_auto,c_fit" 
-  // ); 
-  
-   return res.render("./listings/edit.ejs", { listing, originalImageUrl}); 
+  return res.render("./listings/edit.ejs", { listing, originalImageUrl}); 
 
 };
 

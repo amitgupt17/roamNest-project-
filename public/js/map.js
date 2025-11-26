@@ -1,24 +1,3 @@
-// const { coordinates, coordinates } = require("@maptiler/sdk");
-
-;
-
-// const styleJson = `https://api.maptiler.com/maps/streets-v2/style.json?key=${key}`;
-
-// const attribution = new ol.control.Attribution({
-//         collapsible: false,
-// });
-
-// const map = new ol.Map({
-//    target: 'map',
-//    controls: ol.control.defaults.defaults({attribution: false}).extend([attribution]),
-//    view: new ol.View({
-//       constrainResolution: true,
-//       center: ol.proj.fromLonLat(coordinates),
-//       zoom: 2
-//    })
-// });
-// olms.apply(map, styleJson);
- 
 
   const map = L.map('map').setView(mapConfig.coordinates,10);
 
@@ -26,9 +5,7 @@
     tileSize: 512,
     zoomOffset: -1,
     minZoom: 1,
-   //  attribution:
-   //    '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> ' +
-   //    '<a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+   
     crossOrigin: true
   }).addTo(map);
 function createColoredMarker(color = 'red') {
@@ -40,16 +17,13 @@ function createColoredMarker(color = 'red') {
    `;
 
    return L.divIcon({
-      className: 'custom-marker', // important: give a className
+      className: 'custom-marker', 
       html: svg,
       iconSize: [24, 39],
-      iconAnchor: [12, 39], // point of icon that corresponds to marker coordinates
-      popupAnchor: [0, -35] // point from which the popup opens
+      iconAnchor: [12, 39],
+      popupAnchor: [0, -35] 
    });
 }
-
-
-
   L.marker(mapConfig.coordinates,{ icon: createColoredMarker('red') })
     .addTo(map)
     .bindPopup(`<h4>${mapConfig.titles}</h4><p>Exact Location provided after booking</p>`)

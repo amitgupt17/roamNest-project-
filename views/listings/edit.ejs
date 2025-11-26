@@ -1,6 +1,6 @@
 <%- layout("/layout/boilerplate") %>
 <div class="row mt-3">
-    <div class="col=8 offset-3">
+    <div class="col=8 offset-3 ">
         <h3>Edit listing</h3>
         <form method="POST" action="/listings/<%=listing._id%>?_method=PUT" novalidate class=".needs-validation" enctype="multipart/form-data">
             <div class="mb-3">
@@ -28,6 +28,12 @@
                 <label for="image" class="form-label">Upload New Image</label>
                 <input name="listing[image]"type="file" class="form-control" > 
                  <div class="invalid-feedback"> Please fill valid jpg/png/jpeg </div>
+            </div>
+             <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <input name="listing[category]" id="category" class="form-control" value="<%= listing.category %>" required>
+                <p class="warning">Note: Please ensure that you select a category only from the list displayed on the homepage. Choosing a different category may result in the category-wise filter not functioning correctly for your Nest.</p>
+                <div class="invalid-feedback">Category Should be Valid</div>
             </div>
             <div class="row">
                 <div class="mb-3 col-md-4">

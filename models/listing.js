@@ -62,8 +62,7 @@ const listingSchema = new Schema({
     },
     category:{
         type:String,
-        enum:["mountains","domes","boats","arctic","farms","rooms","cities","castles","pools","camping","beach","trending"],
-        lowercase: true
+
     },
 });
 
