@@ -15,14 +15,11 @@
                 <div class="valid-feedback">Description looks good!</div>
                 <div class="invalid-feedback">Add a short description</div>
             </div>
-            <!-- <% if (listing.image && originalImageUrl) { %> -->
-                <div class="mb-3">
-                    Original Image <br>
-                    <img src="<%=originalImageUrl %>" class="listing-image">
-                </div>
-            <% } %>
-
-
+            
+           <div class="mb-3">
+                Original Image <br>
+                <img src="<%= transformImageUrl %>" class="listing-image">
+            </div>
 
             <div class="mb-3">
                 <label for="image" class="form-label">Upload New Image</label>
